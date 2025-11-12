@@ -5,181 +5,330 @@
  */
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h>
+#include "keymap_italian.h"
 
 // Layer definitions
+
 #define BASE 0
-#define NUM 1
-#define SYM 2
-#define SYS 3
+#define SYM 1
+#define EXT 2
+#define FNC 3
+#define SYM2 4
+#define ACCENT 5
+#define SETTINGS 6
+
 // -----------------
 
-// Home row mods macro
-//#define HRML(k1,k2,k3,k4) &ht LSHFT k1  &ht LALT k2  &ht LCTRL k3  &ht LGUI k4
-//#define HRMR(k1,k2,k3,k4) &ht RGUI k1  &ht RCTRL k2  &ht RALT k3  &ht RSHFT k4
-
 &sk {
-	// don't release mods on other mods presses
-	ignore-modifiers;
+    // don't release mods on other mods presses
+
+    ignore-modifiers;
 };
 
-
 / {
-	behaviors {
-        ht: hold_tap {
+    behaviors {
+        // Enables holding the first mod-tap key
+        // by performing a tap-release-hold sequence.
+        // To use it: "&qt KEYCODE1 KEYCODE2"
+
+        qt: quick_tap {
             compatible = "zmk,behavior-hold-tap";
+            label = "QUICK_TAP";
             #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <220>;
-            quick-tap-ms = <150>;
-            require-prior-idle-ms = <100>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
             bindings = <&kp>, <&kp>;
-        };
-
-		// Enables holding the first mod-tap key
-		// by performing a tap-release-hold sequence.
-		// To use it: "&qt KEYCODE1 KEYCODE2"
-		qt: quick_tap {
-			compatible = "zmk,behavior-hold-tap";
-			label = "QUICK_TAP";
-			#binding-cells = <2>;
-			flavor = "hold-preferred";
-			tapping-term-ms = <200>;
-			quick-tap-ms = <200>;
-			bindings = <&kp>, <&kp>;
-		};
-	};
-
-	macros {
-		// sometimes my device thinks a modifier is being held down
-		// pressing all modifiers fixes it.
-		unstick: unstick {
-			label = "ZM_unstick";
-			compatible = "zmk,behavior-macro";
-			#binding-cells = <0>;
-			bindings = <&kp LSHIFT &kp RSHIFT &kp LCTRL &kp RCTRL &kp LALT &kp RALT &kp LGUI &kp RGUI>;
-		};
-	};
-
-    /* Potentially at other combos for more layers...
-        combos {
-            compatible = "zmk,combos";
-            // both right thumb keys
-            combo_accent {
-                timeout-ms = <200>;
-                key-positions = <32 33>;
-                bindings = <&mo ACCENT>;
-            };
-            // internal-left & external-right thumb keys
-            combo_sym2 {
-                timeout-ms = <200>;
-                key-positions = <31 33>;
-                bindings = <&mo SYM2>;
-            };
-            // both left thumb keys
-            combo_settings {
-                timeout-ms = <200>;
-                key-positions = <30 31>;
-                bindings = <&mo SETTINGS>;
-            };
-            // left index & middle fingers (home-row)
-            // hold control & space for Adobe workflow
-            combo_ctrl_space {
-                timeout-ms = <200>;
-                key-positions = <12 13>;
-                bindings = <&kp LC(SPACE)>;
-                layers = <BASE>;
-            };
-        };
-    */
-    
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        tri_layer {
-            if-layers = <NUM SYM>;
-            then-layer = <SYS>;
         };
     };
 
-	keymap {
-		compatible = "zmk,keymap";
+    macros {
+        // sometimes my device thinks a modifier is being held down
+        // pressing all modifiers fixes it.
 
-		// Base alpha layer
-		default_layer {
-			label = "Base";
-			bindings = <
-                //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-                //│  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P       │
-                    &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P
-                //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-                //│  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │ ' "      │
-                   HRML(A,        S,         D,         F)       &kp G         &kp H    HRMR(J,         K,        L,         SQT) 
-                //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-                //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ / ?      │
-                    &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH
-                //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                                   &kp BSPC    &lt 2 ENTER   &lt 1 SPACE  &kp TAB
-                //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
-            >;
-		};
+        unstick: unstick {
+            label = "ZM_unstick";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LSHIFT &kp RSHIFT &kp LCTRL &kp RCTRL &kp LALT &kp RALT &kp LGUI &kp RGUI>;
+        };
 
-		// Numbers, arrows, some others... lol 
-		num_layer {
-			label = "Num";
-			bindings = <
-                //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-                //│ INSERT   │  1       │  2       │  3       │          │   │ HOME     │ PAGE DN  │ PAGE UP  │ END      │  :       │
-                    &kp INS    &kp N1     &kp N2     &kp N3     &trans         &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &kp COLON
-                //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-                //│ DELETE   │  4       │  5       │  6       │          │   │ LEFT     │ DOWN     │ UP       │ RIGHT    │  ;       │
-                    &kp DEL    &kp N4     &kp N5     &kp N6     &trans         &kp LARW   &kp DARW   &kp UARW   &kp RARW   &kp SEMI
-                //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-                //│ CAPS     │  7       │  8       │  9       │  0       │   │          │          │          │          │          │
-                   &caps_word  &kp N7     &kp N8     &kp N9     &kp N0         &trans     &trans     &trans     &trans     &trans
-                //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                                     &trans     &kp ESC        &trans     &trans
-                //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
-			>;
-		};
+        macro_open_close_paren: macro_open_close_paren {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LPAR &kp RPAR>;
+            label = "MACRO_OPEN_CLOSE_PAREN";
+        };
+    };
 
-		// Main modifiers and arrow keys
-		sym_layer {
-			label = "Sym";
-			bindings = <
-                //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-                //│          │  [       │  {       │  }       │          │   │  ^       │  (       │  )       │  ]       │  ~       │
-                    &trans     &kp LBKT   &kp LBRC   &kp RBRC   &trans         &kp CARET  &kp LPAR   &kp RPAR   &kp RBKT   &kp TILDE
-                //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-                //│  !       │  @       │  #       │  $       │  %       │   │  *       │  -       │  =       │  \       │  `       │
-                    &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT      &kp ASTRK  &kp MINUS  &kp EQUAL  &kp BSLH   &kp GRAVE
-                //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-                //│          │          │          │          │          │   │  &       │  _       │  +       │  │       │          │
-                    &trans     &trans     &trans     &trans     &trans         &kp AMPS   &kp UNDER  &kp PLUS   &kp PIPE   &trans
-                //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                                     &trans     &trans         &trans     &trans
-                //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
-			>;
-		};
+    combos {
+        compatible = "zmk,combos";
 
-		// Used to change the keyboard's settings.
-		system_layer {
-            label = "Sys";
+        // both right thumb keys
+        // internal-left & external-right thumb keys
+        // both left thumb keys
+
+        combo_settings {
+            timeout-ms = <200>;
+            key-positions = <31 30>;
+            bindings = <&mo 3>;
+            layers = <3>;
+        };
+
+        // left index & middle fingers (home-row)
+        // hold control & space for Adobe workflow
+
+        combo_excl {
+            bindings = <&kp EXCL>;
+            key-positions = <5 15>;
+        };
+
+        combo_backspace {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <7 8>;
+        };
+
+        combo_question {
+            bindings = <&kp QUESTION>;
+            key-positions = <15 25>;
+        };
+
+        combo_plus {
+            bindings = <&kp KP_PLUS>;
+            key-positions = <6 16>;
+        };
+
+        combo_minus {
+            bindings = <&kp KP_MINUS>;
+            key-positions = <16 26>;
+        };
+
+        combo_multiply {
+            bindings = <&kp KP_MULTIPLY>;
+            key-positions = <7 17>;
+        };
+
+        combo_divide {
+            bindings = <&kp KP_DIVIDE>;
+            key-positions = <17 27>;
+        };
+
+        combo_right_square {
+            bindings = <&kp RIGHT_BRACKET>;
+            key-positions = <5 6>;
+        };
+
+        combo_right_paren {
+            bindings = <&kp RIGHT_PARENTHESIS>;
+            key-positions = <15 16>;
+        };
+
+        combo_right_curly {
+            bindings = <&kp RIGHT_BRACE>;
+            key-positions = <25 26>;
+        };
+
+        combo_colon {
+            bindings = <&kp COLON>;
+            key-positions = <26 27>;
+        };
+
+        combo_save_doc {
+            bindings = <&kp LC(S)>;
+            key-positions = <27 28>;
+        };
+
+        combo_find {
+            bindings = <&kp LC(F)>;
+            key-positions = <15 17>;
+        };
+
+        combo_undo {
+            bindings = <&kp LC(Z)>;
+            key-positions = <26 28>;
+        };
+
+        combo_term_find {
+            bindings = <&kp LC(R)>;
+            key-positions = <6 8>;
+        };
+
+        combo_rightarrow {
+            bindings = <&kp RIGHT>;
+            key-positions = <26 27 28>;
+        };
+
+        combo_end {
+            bindings = <&kp END>;
+            key-positions = <26 27 28 29>;
+        };
+
+        combo_esc {
+            bindings = <&kp ESCAPE>;
+            key-positions = <13 16>;
+        };
+
+        combo_left_square {
+            bindings = <&kp LEFT_BRACKET>;
+            key-positions = <3 4>;
+        };
+
+        combo_left_paren {
+            bindings = <&kp LEFT_PARENTHESIS>;
+            key-positions = <13 14>;
+        };
+
+        combo_left_curly {
+            bindings = <&kp LEFT_BRACE>;
+            key-positions = <23 24>;
+        };
+
+        combo_printscreen {
+            bindings = <&kp PRINTSCREEN>;
+            key-positions = <2 3>;
+        };
+
+        combo_dollar {
+            bindings = <&kp DOLLAR>;
+            key-positions = <4 14>;
+        };
+
+        combo_at {
+            bindings = <&kp AT>;
+            key-positions = <3 13>;
+        };
+
+        combo_percent {
+            bindings = <&kp PERCENT>;
+            key-positions = <2 12>;
+        };
+
+        combo_hash {
+            bindings = <&kp HASH>;
+            key-positions = <1 11>;
+        };
+
+        combo_tilde {
+            bindings = <&kp TILDE>;
+            key-positions = <11 21>;
+        };
+
+        combo_home {
+            bindings = <&kp HOME>;
+            key-positions = <20 21 22 23>;
+        };
+
+        combo_left {
+            bindings = <&kp LEFT>;
+            key-positions = <21 22 23>;
+        };
+
+        combo_equals {
+            bindings = <&kp KP_EQUAL>;
+            key-positions = <13 23>;
+        };
+
+        combo_underscore {
+            bindings = <&kp UNDER>;
+            key-positions = <14 24>;
+        };
+
+        combo_lt {
+            bindings = <&kp LESS_THAN>;
+            key-positions = <0 1>;
+        };
+
+        combo_gt {
+            bindings = <&kp GREATER_THAN>;
+            key-positions = <1 2>;
+        };
+
+        combo_backslash {
+            bindings = <&kp BACKSLASH>;
+            key-positions = <12 22>;
+        };
+
+        combo_grave {
+            bindings = <&kp GRAVE>;
+            key-positions = <20 21>;
+        };
+
+        combo_pipe {
+            bindings = <&kp PIPE>;
+            key-positions = <18 28>;
+        };
+
+        combo_amp {
+            bindings = <&kp AMPS>;
+            key-positions = <18 8>;
+        };
+
+        combo_delete {
+            bindings = <&kp DELETE>;
+            key-positions = <7 6 32>;
+        };
+
+        combo_open_close {
+            bindings = <&macro_open_close_paren>;
+            key-positions = <15 16 17>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        // Base alpha layer
+
+        default_layer {
+            label = "Base";
             bindings = <
-                //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-                //│ RESET    │          │          │          │PROFILE 0 │   │PROFILE 2 │          │          │          │  RESET   │
-                   &sys_reset  &trans     &trans     &trans    &bt BT_SEL 0   &bt BT_SEL 3  &trans     &trans     &trans    &sys_reset
-                //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-                //│BOOTLOADER│          │          │          │PROFILE 1 │   │PROFILE 3 │          │          │          │BOOTLOADER│
-                  &bootloader  &trans     &trans     &trans    &bt BT_SEL 1   &bt BT_SEL 4  &trans     &trans     &trans    &bootloader
-                //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-                //│          │          │          │          │PROFILE 2 │   │ CLEAR BT │          │          │          │          │
-                    &trans     &trans     &trans    &trans     &bt BT_SEL 2   &bt BT_CLR  &trans     &trans     &trans     &trans
-                //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                                     &trans     &trans         &trans     &trans
-                //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
-			>;
-		};
-	};
+&kp SQT            &kp COMMA       &kp PERIOD          &kp P             &lt 2 Y      &kp F               &kp G  &kp C  &kp R  &kp L
+&mt LEFT_WIN A     &kp O           &kp E               &kp U             &lt 1 I      &kp D               &kp H  &kp T  &kp N  &kp S
+&mt LEFT_WIN SEMI  &mt LEFT_ALT Q  &mt LEFT_CONTROL J  &mt LEFT_SHIFT K  &kp X        &kp B               &kp M  &kp W  &kp V  &kp Z
+                                                       &kp TAB           &lt 2 SPACE  &mt LEFT_SHIFT RET  &sl 1
+            >;
+        };
+
+        // Numbers and high frequency symbols
+
+        numeric {
+            label = "Num.";
+            bindings = <
+&trans  &kp F1   &kp F2   &kp F3   &kp F4  &kp PLUS         &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp SLASH
+&kp F5  &kp F6   &kp F7   &kp F8   &trans  &kp KP_NUMBER_0  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp DOT
+&kp F9  &kp F10  &kp F11  &kp F12  &kp F2  &kp MINUS        &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp ASTERISK
+                          &mo 0    &mo 0   &trans           &trans
+            >;
+        };
+
+        // Main modifiers and arrow keys
+
+        nav {
+            label = "Nav";
+            bindings = <
+&kp C_VOLUME_UP  &mkp RCLK       &mmv MOVE_UP    &mkp LCLK        &msc SCRL_UP    &kp PG_UP   &kp HOME      &kp UP                &kp END    &kp PAGE_UP
+&sk C_VOL_DN     &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &kp LC(GRAVE)   &kp HOME    &kp LEFT      &kp DOWN              &kp RIGHT  &kp PAGE_DOWN
+&kp K_MUTE       &none           &mkp MCLK       &kp DELETE       &msc SCRL_DOWN  &kp LC(UP)  &kp LC(DOWN)  &kp LC(LEFT_BRACKET)  &trans     &trans
+                                                 &trans           &none           &kp ENTER   &mo 0
+            >;
+        };
+
+        // Function keys with modifiers
+        // Low frequency symbols.
+        // Used to type regional accents.
+        // Used to change the keyboard's settings.
+
+        settings_layer {
+            label = "Sett.";
+            bindings = <
+&bootloader     &none  &none  &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 3  &none  &unstick  &none  &bootloader
+&none           &none  &none  &none       &bt BT_SEL 1  &bt BT_SEL 4  &none  &none     &none  &none
+&studio_unlock  &none  &none  &none       &bt BT_SEL 2  &bt BT_SEL 5  &none  &none     &none  &studio_unlock
+                              &none       &none         &none         &none
+            >;
+        };
+    };
 };
