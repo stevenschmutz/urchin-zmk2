@@ -5,7 +5,7 @@ if SHIELD_URCHIN_DONGLE
 
 # Max 16 characters in keyboard name
 config ZMK_KEYBOARD_NAME
-    default "Urchin"
+    default "urchin"
 
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
@@ -31,7 +31,7 @@ config ZMK_KEYBOARD_NAME
     default "urchin"
 
 config ZMK_SPLIT_ROLE_CENTRAL
-    default y
+    default n
 
 endif
 
