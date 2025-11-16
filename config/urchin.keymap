@@ -274,6 +274,16 @@
             bindings = <&macro_open_close_paren>;
             key-positions = <15 16 17>;
         };
+
+        cmb_arrow_up {
+            bindings = <&kp UP_ARROW>;
+            key-positions = <9 19>;
+        };
+
+        cmb_arrow_down {
+            bindings = <&kp DOWN>;
+            key-positions = <19 29>;
+        };
     };
 
     keymap {
