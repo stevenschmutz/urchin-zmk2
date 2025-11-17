@@ -52,7 +52,6 @@
             mods = <(MOD_LSFT)>;
         };
 
-
         bhv_shft_bracket: bhv_shft_bracket {
             compatible = "zmk,behavior-mod-morph";
             label = "BHV_SHFT_BRACKET";
@@ -61,7 +60,6 @@
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
         };
-
 
         bhv_alt_enter: bhv_alt_enter {
             compatible = "zmk,behavior-mod-morph";
@@ -80,8 +78,6 @@
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
         };
-
-       
     };
 
     macros {
@@ -187,7 +183,7 @@
         };
 
         combo_right_curly {
-            bindings = <&macro_shift_enter>;
+            bindings = <&bhv_shift_enter>;
             key-positions = <25 26>;
         };
 
