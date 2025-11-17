@@ -111,7 +111,7 @@
         };
 
         combo_backspace {
-            bindings = <&kp BACKSPACE>;
+            bindings = <&backspace_delete>;
             key-positions = <7 8>;
         };
 
