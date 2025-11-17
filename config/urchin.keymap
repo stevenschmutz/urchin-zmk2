@@ -43,22 +43,40 @@
             bindings = <&kp>, <&kp>;
         };
 
-        backspace_delete: backspace_delete {
+        bhv_backspace_delete: bhv_backspace_delete {
             compatible = "zmk,behavior-mod-morph";
-            label = "BACKSPACE_DELETE";
+            label = "BHV_BACKSPACE_DELETE";
             bindings = <&kp BACKSPACE>, <&kp DELETE>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
         };
 
-        shft_bracket: shft_bracket {
+        bhv_shft_bracket: bhv_shft_bracket {
             compatible = "zmk,behavior-mod-morph";
-            label = "SHFT_BRACKET";
+            label = "BHV_SHFT_BRACKET";
             bindings = <&macro_open_close_paren>, <&macro_opn_cls_square>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
+        };
+
+        bhv_shift_enter: bhv_shift_enter {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BHV_SHIFT_ENTER";
+            bindings = <&kp RIGHT_BRACE>, <&macro_shift_enter>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+        };
+
+        bhv_alt_enter: bhv_alt_enter {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BHV_ALT_ENTER";
+            bindings = <&macro_shift_enter>, <&macro_alt_enter>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LALT)>;
         };
     };
 
@@ -86,6 +104,20 @@
             bindings = <&kp LS(LEFT_BRACE) &kp LS(RIGHT_BRACE)>;
             label = "MACRO_OPN_CLS_SQUARE";
         };
+
+        macro_shift_enter: macro_shift_enter {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(ENTER)>;
+            label = "MACRO_SHIFT_ENTER";
+        };
+
+        macro_alt_enter: macro_alt_enter {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(ENTER)>;
+            label = "MACRO_ALT_ENTER";
+        };
     };
 
     combos {
@@ -111,7 +143,7 @@
         };
 
         combo_backspace {
-            bindings = <&backspace_delete>;
+            bindings = <&bhv_backspace_delete>;
             key-positions = <7 8>;
         };
 
@@ -151,7 +183,7 @@
         };
 
         combo_right_curly {
-            bindings = <&kp RIGHT_BRACE>;
+            bindings = <&macro_shift_enter>;
             key-positions = <25 26>;
         };
 
@@ -296,8 +328,8 @@
         };
 
         combo_open_close {
-            bindings = <&macro_open_close_paren>;
-            key-positions = <15 16 17>;
+            bindings = <&bhv_shft_bracket>;
+            key-positions = <15 16>;
         };
 
         cmb_arrow_up {
