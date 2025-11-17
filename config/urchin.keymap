@@ -52,6 +52,7 @@
             mods = <(MOD_LSFT)>;
         };
 
+
         bhv_shft_bracket: bhv_shft_bracket {
             compatible = "zmk,behavior-mod-morph";
             label = "BHV_SHFT_BRACKET";
@@ -61,14 +62,6 @@
             mods = <(MOD_LSFT)>;
         };
 
-        bhv_shift_enter: bhv_shift_enter {
-            compatible = "zmk,behavior-mod-morph";
-            label = "BHV_SHIFT_ENTER";
-            bindings = <&kp RIGHT_BRACE>, <&macro_shift_enter>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
-        };
 
         bhv_alt_enter: bhv_alt_enter {
             compatible = "zmk,behavior-mod-morph";
@@ -76,8 +69,19 @@
             bindings = <&macro_shift_enter>, <&macro_alt_enter>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LALT)>;
+            mods = <(MOD_LCTL)>;
         };
+
+        bhv_shift_enter: bhv_shift_enter {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BHV_SHIFT_ENTER";
+            bindings = <&kp RIGHT_BRACE>, <&bhv_alt_enter>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+        };
+
+       
     };
 
     macros {
