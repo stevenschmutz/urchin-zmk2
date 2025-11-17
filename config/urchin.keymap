@@ -324,11 +324,11 @@
 
         combo_delete {
             bindings = <&kp DELETE>;
-            key-positions = <7 6 32>;
+            key-positions = <7 6>;
         };
 
         combo_open_close {
-            bindings = <&bhv_shft_bracket>;
+            bindings = <&kp RIGHT_PARENTHESIS>;
             key-positions = <15 16>;
         };
 
@@ -340,6 +340,11 @@
         cmb_arrow_down {
             bindings = <&kp DOWN>;
             key-positions = <19 29>;
+        };
+
+        combo_open_close_brack {
+            bindings = <&bhv_shft_bracket>;
+            key-positions = <15 16 17>;
         };
     };
 
