@@ -42,6 +42,24 @@
             quick-tap-ms = <200>;
             bindings = <&kp>, <&kp>;
         };
+
+        backspace_delete: backspace_delete {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BACKSPACE_DELETE";
+            bindings = <&kp BACKSPACE>, <&kp DELETE>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+        };
+
+        shft_bracket: shft_bracket {
+            compatible = "zmk,behavior-mod-morph";
+            label = "SHFT_BRACKET";
+            bindings = <&macro_open_close_paren>, <&macro_opn_cls_square>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+        };
     };
 
     macros {
@@ -60,6 +78,13 @@
             #binding-cells = <0>;
             bindings = <&kp LPAR &kp RPAR>;
             label = "MACRO_OPEN_CLOSE_PAREN";
+        };
+
+        macro_opn_cls_square: macro_opn_cls_square {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(LEFT_BRACE) &kp LS(RIGHT_BRACE)>;
+            label = "MACRO_OPN_CLS_SQUARE";
         };
     };
 
@@ -294,9 +319,9 @@
         default_layer {
             label = "Base";
             bindings = <
-&kp SQT            &mt LC(X) COMMA  &mt LC(C) PERIOD    &mt LC(V) P       &lt 2 Y      &kp F               &kp G  &kp C  &kp R  &kp L
-&mt LEFT_WIN A     &kp O            &kp E               &kp U             &lt 1 I      &kp D               &kp H  &kp T  &kp N  &kp S
-&mt LEFT_WIN SEMI  &mt LEFT_ALT Q   &mt LEFT_CONTROL J  &mt LEFT_SHIFT K  &kp X        &kp B               &kp M  &kp W  &kp V  &kp Z
+&kp SQT            &mt LC(X) COMMA  &mt LC(C) PERIOD    &mt LC(V) P       &lt 2 Y      &kp F               &kp G             &kp C  &kp R  &kp L
+&kp A              &kp O            &kp E               &kp U             &lt 1 I      &kp D               &kp H             &kp T  &kp N  &kp S
+&mt LEFT_WIN SEMI  &mt LEFT_ALT Q   &mt LEFT_CONTROL J  &mt LEFT_SHIFT K  &kp X        &kp B               &mt LEFT_SHIFT M  &kp W  &kp V  &kp Z
                                                         &kp TAB           &lt 2 SPACE  &mt LEFT_SHIFT RET  &sl 1
             >;
         };
