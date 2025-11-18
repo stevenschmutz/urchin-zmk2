@@ -60,24 +60,6 @@
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
         };
-
-        bhv_alt_enter: bhv_alt_enter {
-            compatible = "zmk,behavior-mod-morph";
-            label = "BHV_ALT_ENTER";
-            bindings = <&macro_shift_enter>, <&macro_alt_enter>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LCTL)>;
-        };
-
-        bhv_shift_enter: bhv_shift_enter {
-            compatible = "zmk,behavior-mod-morph";
-            label = "BHV_SHIFT_ENTER";
-            bindings = <&kp RIGHT_BRACE>, <&bhv_alt_enter>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
-        };
     };
 
     macros {
@@ -101,22 +83,8 @@
         macro_opn_cls_square: macro_opn_cls_square {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LS(LEFT_BRACE) &kp LS(RIGHT_BRACE)>;
+            bindings = <&kp LBKT &kp RIGHT_BRACKET>;
             label = "MACRO_OPN_CLS_SQUARE";
-        };
-
-        macro_shift_enter: macro_shift_enter {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LS(ENTER)>;
-            label = "MACRO_SHIFT_ENTER";
-        };
-
-        macro_alt_enter: macro_alt_enter {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(ENTER)>;
-            label = "MACRO_ALT_ENTER";
         };
     };
 
@@ -183,7 +151,7 @@
         };
 
         combo_right_curly {
-            bindings = <&bhv_shift_enter>;
+            bindings = <&kp RIGHT_BRACE>;
             key-positions = <25 26>;
         };
 
