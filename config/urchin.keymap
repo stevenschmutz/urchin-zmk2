@@ -67,7 +67,7 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <240>;
             hold-while-undecided;
             hold-trigger-on-release;
             hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31>;
@@ -79,7 +79,7 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <240>;
             hold-while-undecided;
             hold-trigger-on-release;
             hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 25 26 27 28 29 32 33>;
@@ -91,7 +91,7 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <240>;
             hold-while-undecided;
             hold-trigger-on-release;
             hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31>;
@@ -104,7 +104,7 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <240>;
             hold-while-undecided;
             hold-trigger-on-release;
             hold-trigger-key-positions = <5 6 7 8 7 8 9 17 18 19 27 28 29 5 6 7 8 15 16 17 18 25 26 27 28 32 33>;
@@ -373,10 +373,10 @@
         default_layer {
             label = "Base";
             bindings = <
-&kp SQT             &mt LC(X) COMMA  &mt LC(C) PERIOD     &mt LC(V) P             &lt 2 Y      &kp F               &kp G                   &kp C                &kp R  &kp L
-&kp A               &kp O            &kp E                &kp U                   &lt 1 I      &kp D               &kp H                   &kp T                &kp N  &kp S
-&HMR LEFT_WIN SEMI  &HMR LEFT_ALT Q  &HMR LEFT_CONTROL J  &HMShiftR LEFT_SHIFT K  &kp X        &kp B               &HMShiftL LEFT_SHIFT M  &HML LEFT_CONTROL W  &kp V  &mt LA(DOWN) Z
-                                                          &kp TAB                 &lt 2 SPACE  &mt LEFT_SHIFT RET  &sl 1
+&kp SQT             &mt LC(X) COMMA  &mt LC(C) PERIOD     &mt LC(V) P             &lt 2 Y      &kp F                     &kp G                   &kp C                &kp R  &kp L
+&kp A               &kp O            &kp E                &kp U                   &lt 1 I      &kp D                     &kp H                   &kp T                &kp N  &kp S
+&HMR LEFT_WIN SEMI  &HMR LEFT_ALT Q  &HMR LEFT_CONTROL J  &HMShiftR LEFT_SHIFT K  &kp X        &kp B                     &HMShiftL LEFT_SHIFT M  &HML LEFT_CONTROL W  &kp V  &mt LA(DOWN) Z
+                                                          &kp TAB                 &lt 2 SPACE  &HMShiftL LEFT_SHIFT RET  &sl 1
             >;
         };
 
