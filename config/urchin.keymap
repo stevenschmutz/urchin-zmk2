@@ -345,11 +345,6 @@
             key-positions = <7 6>;
         };
 
-        combo_open_close {
-            bindings = <&kp RIGHT_PARENTHESIS>;
-            key-positions = <15 16>;
-        };
-
         cmb_arrow_up {
             bindings = <&kp UP_ARROW>;
             key-positions = <9 19>;
@@ -374,9 +369,9 @@
         default_layer {
             label = "Base";
             bindings = <
-&kp SQT            &mt LC(X) COMMA  &mt LC(C) PERIOD     &mt LC(V) P         &lt 2 Y      &kp F                     &kp G                   &kp C                &kp R  &kp L
-&kp A              &kp O            &kp E                &kp U               &lt 1 I      &kp D                     &kp H                   &kp T                &kp N  &kp S
-&mt LEFT_WIN SEMI  &HMR LEFT_ALT Q  &HMR LEFT_CONTROL J  &kp K               &kp X        &kp B                     &HMShiftL LEFT_SHIFT M  &HML LEFT_CONTROL W  &kp V  &mt LA(DOWN) Z
+&kp SQT            &mt LC(X) COMMA  &mt LC(C) PERIOD     &mt LC(V) P         &lt 2 Y      &kp F                     &kp G  &kp C                &kp R  &kp L
+&kp A              &kp O            &kp E                &kp U               &lt 1 I      &kp D                     &kp H  &kp T                &kp N  &kp S
+&mt LEFT_WIN SEMI  &HMR LEFT_ALT Q  &HMR LEFT_CONTROL J  &kp K               &kp X        &kp B                     &kp M  &HML LEFT_CONTROL W  &kp V  &mt LA(DOWN) Z
                                                          &mt LEFT_SHIFT TAB  &lt 2 SPACE  &HMShiftL LEFT_SHIFT RET  &sl 1
             >;
         };
