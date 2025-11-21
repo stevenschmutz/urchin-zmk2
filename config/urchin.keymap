@@ -110,6 +110,23 @@
             hold-trigger-key-positions = <5 6 7 8 7 8 9 17 18 19 27 28 29 5 6 7 8 15 16 17 18 25 26 27 28 32 33>;
             flavor = "balanced";
         };
+
+        tap_dance_qu_alt: tap_dance_qu_alt {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_QU_ALT";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp Q>, <&mcr_qu>;
+        };
+
+        taphold_qu: taphold_qu {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TAPHOLD_QU";
+            bindings = <&kp>, <&tap_dance_qu_alt>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+        };
     };
 
     macros {
@@ -135,6 +152,13 @@
             #binding-cells = <0>;
             bindings = <&kp LBKT &kp RIGHT_BRACKET>;
             label = "MACRO_OPN_CLS_SQUARE";
+        };
+
+        mcr_qu: mcr_qu {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp Q &kp U>;
+            label = "MCR_QU";
         };
     };
 
@@ -369,10 +393,10 @@
         default_layer {
             label = "Base";
             bindings = <
-&kp SQT            &mt LC(X) COMMA  &mt LC(C) PERIOD     &mt LC(V) P         &lt 2 Y      &kp F                     &kp G  &kp C                &kp R  &kp L
-&kp A              &kp O            &kp E                &kp U               &lt 1 I      &kp D                     &kp H  &kp T                &kp N  &kp S
-&mt LEFT_WIN SEMI  &HMR LEFT_ALT Q  &HMR LEFT_CONTROL J  &kp K               &kp X        &kp B                     &kp M  &HML LEFT_CONTROL W  &kp V  &mt LA(DOWN) Z
-                                                         &mt LEFT_SHIFT TAB  &lt 2 SPACE  &HMShiftL LEFT_SHIFT RET  &sl 1
+&kp SQT            &mt LC(X) COMMA         &mt LC(C) PERIOD     &mt LC(V) P         &lt 2 Y      &kp F                     &kp G  &kp C                &kp R  &kp L
+&kp A              &kp O                   &kp E                &kp U               &lt 1 I      &kp D                     &kp H  &kp T                &kp N  &kp S
+&mt LEFT_WIN SEMI  &taphold_qu LEFT_ALT 0  &HMR LEFT_CONTROL J  &kp K               &kp X        &kp B                     &kp M  &HML LEFT_CONTROL W  &kp V  &mt LA(DOWN) Z
+                                                                &mt LEFT_SHIFT TAB  &lt 2 SPACE  &HMShiftL LEFT_SHIFT RET  &sl 1
             >;
         };
 
