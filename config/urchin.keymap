@@ -111,12 +111,12 @@
             flavor = "balanced";
         };
 
-        tap_dance_qu_alt: tap_dance_qu_alt {
+        tap_dance_qu_alt: tap_dance_mod_tap {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_QU_ALT";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mt &kp Q  &kp LALT>, <&mcr_qu>;
+            bindings = <&mt Q LALT>, <&mcr_qu>;
         };
     };
 
