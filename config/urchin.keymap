@@ -115,7 +115,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_QU_ALT";
             #binding-cells = <0>;
-            tapping-term-ms = <175>;
+            tapping-term-ms = <100>;
             bindings = <&mt LEFT_ALT Q>, <&mcr_qu>;
         };
     };
