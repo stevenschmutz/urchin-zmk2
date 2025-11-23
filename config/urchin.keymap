@@ -116,7 +116,7 @@
             label = "TAP_DANCE_QU_ALT";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp Q>, <&mcr_qu>;
+            bindings = <&mt &kp Q  &kp LALT>, <&mcr_qu>;
         };
 
         taphold_qu: taphold_qu {
@@ -395,7 +395,7 @@
             bindings = <
 &kp SQT            &mt LC(X) COMMA         &mt LC(C) PERIOD     &mt LC(V) P         &lt 2 Y      &kp F                     &kp G  &kp C                &kp R  &kp L
 &kp A              &kp O                   &kp E                &kp U               &lt 1 I      &kp D                     &kp H  &kp T                &kp N  &kp S
-&mt LEFT_WIN SEMI  &taphold_qu LEFT_ALT 0  &HMR LEFT_CONTROL J  &kp K               &kp X        &kp B                     &kp M  &HML LEFT_CONTROL W  &kp V  &mt LA(DOWN) Z
+&mt LEFT_WIN SEMI  &tapdance_qu_alt  &HMR LEFT_CONTROL J  &kp K               &kp X        &kp B                     &kp M  &HML LEFT_CONTROL W  &kp V  &mt LA(DOWN) Z
                                                                 &mt LEFT_SHIFT TAB  &lt 2 SPACE  &HMShiftL LEFT_SHIFT RET  &sl 1
             >;
         };
