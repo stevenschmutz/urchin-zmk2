@@ -119,14 +119,6 @@
             bindings = <&mt &kp Q  &kp LALT>, <&mcr_qu>;
         };
 
-        taphold_qu: taphold_qu {
-            compatible = "zmk,behavior-hold-tap";
-            label = "TAPHOLD_QU";
-            bindings = <&kp>, <&tap_dance_qu_alt>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <250>;
-        };
     };
 
     macros {
@@ -395,7 +387,7 @@
             bindings = <
 &kp SQT            &mt LC(X) COMMA         &mt LC(C) PERIOD     &mt LC(V) P         &lt 2 Y      &kp F                     &kp G  &kp C                &kp R  &kp L
 &kp A              &kp O                   &kp E                &kp U               &lt 1 I      &kp D                     &kp H  &kp T                &kp N  &kp S
-&mt LEFT_WIN SEMI  &tapdance_qu_alt  &HMR LEFT_CONTROL J  &kp K               &kp X        &kp B                     &kp M  &HML LEFT_CONTROL W  &kp V  &mt LA(DOWN) Z
+&mt LEFT_WIN SEMI  &tap_dance_qu_alt  &HMR LEFT_CONTROL J  &kp K               &kp X        &kp B                     &kp M  &HML LEFT_CONTROL W  &kp V  &mt LA(DOWN) Z
                                                                 &mt LEFT_SHIFT TAB  &lt 2 SPACE  &HMShiftL LEFT_SHIFT RET  &sl 1
             >;
         };
