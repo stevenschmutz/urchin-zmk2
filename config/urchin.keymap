@@ -379,6 +379,16 @@
             bindings = <&kp LC(A)>;
             key-positions = <22 23>;
         };
+
+        shift_paste {
+            bindings = <&kp LS(LC(V))>;
+            key-positions = <21 12 23>;
+        };
+
+        shift_copy {
+            bindings = <&kp LS(LC(C))>;
+            key-positions = <12 1>;
+        };
     };
 
     keymap {
