@@ -134,14 +134,14 @@
         macro_open_close_paren: macro_open_close_paren {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LPAR &kp RPAR>;
+            bindings = <&kp LPAR &kp RPAR &kp LEFT_ARROW>;
             label = "MACRO_OPEN_CLOSE_PAREN";
         };
 
         macro_opn_cls_square: macro_opn_cls_square {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LBKT &kp RIGHT_BRACKET>;
+            bindings = <&kp LBKT &kp RIGHT_BRACKET &kp LEFT_ARROW>;
             label = "MACRO_OPN_CLS_SQUARE";
         };
 
@@ -400,7 +400,7 @@
             label = "Base";
             bindings = <
 &kp SQT            &mt LC(X) COMMA    &mt LC(C) PERIOD     &mt LC(V) P         &lt 2 Y      &kp F                     &kp G  &kp C  &kp R  &kp L
-&kp A              &kp O              &kp E                &kp U               &lt 1 I      &kp D                     &kp H  &kp T  &kp N  &kp S
+&mt LC(B) A        &kp O              &kp E                &kp U               &lt 1 I      &kp D                     &kp H  &kp T  &kp N  &kp S
 &mt LEFT_WIN SEMI  &tap_dance_qu_alt  &HMR LEFT_CONTROL J  &kp K               &kp X        &kp B                     &kp M  &kp W  &kp V  &mt LA(DOWN) Z
                                                            &mt LEFT_SHIFT TAB  &lt 2 SPACE  &HMShiftL LEFT_SHIFT RET  &sl 1
             >;
