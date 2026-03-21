@@ -389,6 +389,11 @@
             bindings = <&kp LS(LC(C))>;
             key-positions = <12 1>;
         };
+
+        Shift-Enter {
+            bindings = <&kp LS(ENTER)>;
+            key-positions = <22 23 26 27>;
+        };
     };
 
     keymap {
