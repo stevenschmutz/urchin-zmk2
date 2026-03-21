@@ -430,7 +430,7 @@
             bindings = <
 &kp C_VOLUME_UP  &mkp RCLK       &mmv MOVE_UP    &mkp LCLK        &msc SCRL_UP    &kp PG_UP   &kp HOME      &kp UP                &kp END    &kp PAGE_UP
 &sk C_VOL_DN     &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &kp LC(GRAVE)   &kp HOME    &kp LEFT      &kp DOWN              &kp RIGHT  &kp PAGE_DOWN
-&kp K_MUTE       &none           &mkp MCLK       &kp DELETE       &msc SCRL_DOWN  &kp LC(UP)  &kp LC(DOWN)  &kp LC(LEFT_BRACKET)  &trans     &trans
+&kp K_MUTE       &none           &mkp MCLK       &kp DELETE       &msc SCRL_DOWN  &kp LC(UP)  &kp LC(DOWN)  &kp LC(LEFT_BRACKET)  &trans     &caps_word
                                                  &trans           &none           &kp ENTER   &mo 0
             >;
         };
