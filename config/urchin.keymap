@@ -411,19 +411,16 @@
             >;
         };
 
-        // Numbers and high frequency symbols
-
         numeric {
-            label = "Num.";
             bindings = <
-&trans  &kp F1   &kp F2   &kp F3   &kp F4  &kp PLUS   &kp N7        &kp N8        &kp N9        &kp SLASH
-&kp F5  &kp F6   &kp F7   &kp F8   &trans  &kp N0     &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp DOT
-&kp F9  &kp F10  &kp F11  &kp F12  &kp F2  &kp MINUS  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp ASTERISK
-                          &mo 0    &mo 0   &trans     &trans
+&trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp F5   &kp F1  &trans  &trans  &kp N1  &kp N2  &kp N3  &kp MINUS
+&trans  &trans  &kp F11  &kp F2  &trans  &trans  &kp N4  &kp N5  &kp N6  &kp PLUS
+                         &trans  &trans  &trans  &trans
             >;
-        };
 
-        // Main modifiers and arrow keys
+            label = "num.";
+        };
 
         nav {
             label = "Nav";
@@ -434,11 +431,6 @@
                                                  &trans           &none           &kp ENTER   &mo 0
             >;
         };
-
-        // Function keys with modifiers
-        // Low frequency symbols.
-        // Used to type regional accents.
-        // Used to change the keyboard's settings.
 
         settings_layer {
             label = "Sett.";
