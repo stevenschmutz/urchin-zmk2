@@ -223,11 +223,13 @@
         combo_colon {
             bindings = <&kp COLON>;
             key-positions = <26 27>;
+            layers = <0>;
         };
 
         combo_save_doc {
             bindings = <&kp LC(S)>;
             key-positions = <27 28>;
+            layers = <0>;
         };
 
         combo_find {
