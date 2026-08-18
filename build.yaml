@@ -13,11 +13,11 @@
 #
 ---
 include:
-  - board: nice_nano_v2
+  - board: nice_nano_v2//zmk
     shield: urchin_dongle
-  - board: nice_nano_v2
+  - board: nice_nano_v2//zmk
     shield: urchin_left nice_view_adapter  nice_view
-  - board: nice_nano_v2
+  - board: nice_nano_v2//zmk
     shield: urchin_right nice_view_adapter nice_view
-  - board: nice_nano_v2
+  - board: nice_nano_v2//zmk
     shield: settings_reset
