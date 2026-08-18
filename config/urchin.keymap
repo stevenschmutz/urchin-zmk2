@@ -151,6 +151,27 @@
             bindings = <&kp Q &kp U>;
             label = "MCR_QU";
         };
+
+        mcr_text_and: mcr_text_and {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp A &kp N &kp D>;
+            label = "MCR_TEXT_AND";
+        };
+
+        mcr_text_the: mcr_text_the {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp T &kp H &kp E>;
+            label = "MCR_TEXT_THE";
+        };
+
+        mcr_text_you: mcr_text_you {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp Y &kp O &kp U>;
+            label = "MCR_TEXT_YOU";
+        };
     };
 
     combos {
@@ -418,8 +439,14 @@
         combo_for_zero {
             bindings = <&kp KP_NUMBER_0>;
             key-positions = <27 28>;
-            layers = <1>;        
-};
+            layers = <1>;
+        };
+
+        combo_text_the {
+            bindings = <&mcr_text_the>;
+            key-positions = <12 11 10>;
+            layers = <1>;
+        };
     };
 
     keymap {
@@ -445,16 +472,16 @@
                          &trans  &trans  &trans  &trans
             >;
 
-            label = "num.";
+            label = "Num.";
         };
 
         nav {
             label = "Nav";
             bindings = <
-&kp C_VOLUME_UP  &mkp RCLK       &mmv MOVE_UP    &mkp LCLK        &msc SCRL_UP    &none  &none  &none  &none  &none
-&sk C_VOL_DN     &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &kp LC(GRAVE)   &none   &kp HOME      &kp UP                &kp END    &kp PAGE_UP
-&kp K_MUTE       &none           &mkp MCLK       &kp DELETE       &msc SCRL_DOWN  &none    &kp LEFT      &kp DOWN              &kp RIGHT  &kp PAGE_DOWN
-                                                 &trans           &none           &kp ENTER   &mo 0
+&kp C_VOLUME_UP  &mkp RCLK       &mmv MOVE_UP    &mkp LCLK        &msc SCRL_UP    &none      &none     &none     &none      &none
+&sk C_VOL_DN     &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &kp LC(GRAVE)   &none      &kp HOME  &kp UP    &kp END    &kp PAGE_UP
+&kp K_MUTE       &none           &mkp MCLK       &kp DELETE       &msc SCRL_DOWN  &none      &kp LEFT  &kp DOWN  &kp RIGHT  &kp PAGE_DOWN
+                                                 &trans           &none           &kp ENTER  &mo 0
             >;
         };
 
