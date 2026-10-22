@@ -419,25 +419,25 @@
         };
 
         combo_for_7 {
-            bindings = <&kp KP_NUMBER_7>;
+            bindings = <&kp N7>;
             key-positions = <16 17>;
             layers = <1>;
         };
 
         combo_for_8 {
-            bindings = <&kp KP_NUMBER_8>;
+            bindings = <&kp N8>;
             key-positions = <17 18>;
             layers = <1>;
         };
 
         combo_for_9 {
-            bindings = <&kp KP_NUMBER_9>;
+            bindings = <&kp N9>;
             key-positions = <26 27>;
             layers = <1>;
         };
 
         combo_for_zero {
-            bindings = <&kp KP_NUMBER_0>;
+            bindings = <&kp N0>;
             key-positions = <27 28>;
             layers = <1>;
         };
